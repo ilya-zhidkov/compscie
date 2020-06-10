@@ -12,7 +12,7 @@ namespace CompScie.ConsoleApp.Demos.StackDemo
     {
         public static void Show()
         {
-            Console.Write("Enter size of a stack: ");
+            ConsoleUtilities.Prompt("Enter size of a stack: ");
             var stack = new Stack(size: ConsoleUtilities.GetUserInput());
 
             var operations = new Dictionary<int, IOperation>
