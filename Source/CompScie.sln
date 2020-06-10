@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8904441C-C4FF-468D-8359-C56DDFD5A969}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompScie.Core", "CompScie.Core\CompScie.Core.csproj", "{75A6A32E-C3AC-43A3-9332-0A70337A07D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompScie.ConsoleApp", "CompScie.ConsoleApp\CompScie.ConsoleApp.csproj", "{B566550F-9796-419D-AA9F-AB1BBD7D40F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75A6A32E-C3AC-43A3-9332-0A70337A07D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A6A32E-C3AC-43A3-9332-0A70337A07D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A6A32E-C3AC-43A3-9332-0A70337A07D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A6A32E-C3AC-43A3-9332-0A70337A07D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B566550F-9796-419D-AA9F-AB1BBD7D40F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B566550F-9796-419D-AA9F-AB1BBD7D40F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B566550F-9796-419D-AA9F-AB1BBD7D40F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B566550F-9796-419D-AA9F-AB1BBD7D40F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BD85683-1A6F-4E2C-AE13-03B398E4FCEE}
+	EndGlobalSection
+EndGlobal
