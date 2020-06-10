@@ -4,9 +4,23 @@ A set of computer science related topics (such as algorithms, data structures et
 
 ---
 
+## Setup
+
+> _**NOTE**: Make sure you have .NET framework 4.7.2 installed on your OS._
+
+1. Clone or download repository
+   
+    ```bash
+    git clone https://github.com/ilya-zhidkov/compscie.git
+    ```
+
+2. In Visual Studio, set **CompScie.ConsoleApp** as a startup project (if not already) and press F5.
+
+---
+
 ### Algorithms and Data Structures
 
-- [ ] Stack
+- [x] Stack
 - [ ] Circular queue
 - [ ] Random number generator
 - [ ] Bubble sort
@@ -25,4 +39,4 @@ A set of computer science related topics (such as algorithms, data structures et
 
 ---
 
-*Made for students of UJEP (Univerzita Jana Evangelisty Purkyně) in Ústí nad Labem who are specializing in computer science degree.
+*Made for students of UJEP (Univerzita Jana Evangelisty Purkyně) in Ústí nad Labem who are specializing in computer science degree.*
