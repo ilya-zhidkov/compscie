@@ -21,7 +21,7 @@ A set of computer science related topics (such as algorithms, data structures et
 ### Algorithms and Data Structures
 
 - [x] Stack
-- [ ] Circular queue
+- [x] Circular queue
 - [ ] Random number generator
 - [ ] Bubble sort
 - [ ] Selection sort
