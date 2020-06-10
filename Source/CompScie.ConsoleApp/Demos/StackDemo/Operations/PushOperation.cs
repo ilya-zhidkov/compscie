@@ -1,4 +1,5 @@
 ﻿using System;
+
 using CompScie.ConsoleApp.Utilities;
 using CompScie.Core;
 

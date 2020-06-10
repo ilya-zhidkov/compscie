@@ -30,9 +30,6 @@ namespace CompScie.Core
 
         public bool IsFull() => count == items.Length;
 
-        public override string ToString()
-        {
-            return $"[{string.Join(", ", items.Take(count).Reverse())}]";
-        }
+        public override string ToString() => $"[{string.Join(", ", items.Take(count).Reverse())}]";
     }
 }
