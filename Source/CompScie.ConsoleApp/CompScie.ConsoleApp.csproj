@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Demos\BubbleSortDemo\BubbleSortDemo.cs" />
     <Compile Include="Demos\GeneratorDemo\GeneratorDemo.cs" />
     <Compile Include="Demos\QueueDemo\Operations\DequeueOperation.cs" />
     <Compile Include="Demos\QueueDemo\Operations\EnqueueOperation.cs" />

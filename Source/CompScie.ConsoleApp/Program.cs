@@ -1,9 +1,9 @@
-﻿using CompScie.ConsoleApp.Demos.GeneratorDemo;
+﻿using CompScie.ConsoleApp.Demos.BubbleSortDemo;
 
 namespace CompScie.ConsoleApp
 {
     class Program
     {
-        static void Main(string[] args) => GeneratorDemo.Show();
+        static void Main(string[] args) => BubbleSortDemo.Show();
     }
 }

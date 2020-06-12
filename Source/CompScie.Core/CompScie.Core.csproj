@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BubbleSort.cs" />
     <Compile Include="CircularQueue.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="Stack.cs" />

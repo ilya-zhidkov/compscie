@@ -23,19 +23,11 @@ A set of computer science related topics (such as algorithms, data structures et
 - [x] Stack
 - [x] Circular queue
 - [x] Random number generator
-- [ ] Bubble sort
-- [ ] Selection sort
-- [ ] Insertion sort
-- [ ] Heap sort
+- [x] Bubble sort
 - [ ] Quick sort
-- [ ] Merge sort
 - [ ] Counting sort
-- [ ] Radix sort
-- [ ] Bucket sort
 - [ ] Binary tree
 - [ ] Binary search tree
-- [ ] AVL tree
-- [ ] Prefix trie
 
 ---
 
