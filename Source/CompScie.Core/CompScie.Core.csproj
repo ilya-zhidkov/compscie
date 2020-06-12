@@ -44,6 +44,7 @@
     <Compile Include="BubbleSort.cs" />
     <Compile Include="CircularQueue.cs" />
     <Compile Include="Generator.cs" />
+    <Compile Include="QuickSort.cs" />
     <Compile Include="Stack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

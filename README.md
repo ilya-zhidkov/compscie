@@ -24,7 +24,7 @@ A set of computer science related topics (such as algorithms, data structures et
 - [x] Circular queue
 - [x] Random number generator
 - [x] Bubble sort
-- [ ] Quick sort
+- [x] Quick sort
 - [ ] Counting sort
 - [ ] Binary tree
 - [ ] Binary search tree

@@ -1,9 +1,9 @@
-﻿using CompScie.ConsoleApp.Demos.BubbleSortDemo;
+﻿using CompScie.ConsoleApp.Demos.QuickSortDemo;
 
 namespace CompScie.ConsoleApp
 {
     class Program
     {
-        static void Main(string[] args) => BubbleSortDemo.Show();
+        static void Main(string[] args) => QuickSortDemo.Show();
     }
 }
