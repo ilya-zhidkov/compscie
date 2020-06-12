@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BubbleSort.cs" />
     <Compile Include="CircularQueue.cs" />
+    <Compile Include="CountingSort.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="QuickSort.cs" />
     <Compile Include="Stack.cs" />
