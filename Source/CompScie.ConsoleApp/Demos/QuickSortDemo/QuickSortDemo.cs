@@ -7,6 +7,8 @@ namespace CompScie.ConsoleApp.Demos.QuickSortDemo
 {
     public class QuickSortDemo
     {
+        private const string path = "quick.txt";
+
         public static void Show()
         {
             var sorter = new QuickSort();
@@ -15,8 +17,10 @@ namespace CompScie.ConsoleApp.Demos.QuickSortDemo
 
             sorter.Sort(numbers);
 
+            FileUtilities.DeleteIfExists(path);
+
             foreach (var number in numbers)
-                FileUtilities.Write("quick.txt", number);
+                FileUtilities.Write(path, number);
 
             ConsoleUtilities.Prompt("Sorted!\n");
         }

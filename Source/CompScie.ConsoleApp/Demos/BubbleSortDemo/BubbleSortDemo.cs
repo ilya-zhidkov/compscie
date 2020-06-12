@@ -7,6 +7,8 @@ namespace CompScie.ConsoleApp.Demos.BubbleSortDemo
 {
     public class BubbleSortDemo
     {
+        private const string path = "bubble.txt";
+
         public static void Show()
         {
             var sorter = new BubbleSort();
@@ -15,8 +17,10 @@ namespace CompScie.ConsoleApp.Demos.BubbleSortDemo
 
             sorter.Sort(numbers);
 
+            FileUtilities.DeleteIfExists(path);
+
             foreach (var number in numbers)
-                FileUtilities.Write("bubble.txt", number);
+                FileUtilities.Write(path, number);
 
             ConsoleUtilities.Prompt("Sorted!\n");
         }

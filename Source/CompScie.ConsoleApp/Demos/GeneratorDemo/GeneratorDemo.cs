@@ -5,6 +5,8 @@ namespace CompScie.ConsoleApp.Demos.GeneratorDemo
 {
     public class GeneratorDemo
     {
+        private const string path = "cisla.txt";
+
         public static void Show()
         {
             ConsoleUtilities.Prompt("Enter minimum: ");
@@ -16,8 +18,10 @@ namespace CompScie.ConsoleApp.Demos.GeneratorDemo
             ConsoleUtilities.Prompt("How many numbers to generate? ");
             var count = ConsoleUtilities.GetUserInput();
 
+            FileUtilities.DeleteIfExists(path);
+
             for (int index = 0; index < count; index++)
-                FileUtilities.Write("cisla.txt", Generator.Generate(min, max));
+                FileUtilities.Write(path, Generator.Generate(min, max));
 
             ConsoleUtilities.Prompt("\nDone!\n");
         }
