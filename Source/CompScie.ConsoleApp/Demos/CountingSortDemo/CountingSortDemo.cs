@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using CompScie.ConsoleApp.Utilities;
 using CompScie.Core;
@@ -15,7 +16,7 @@ namespace CompScie.ConsoleApp.Demos.CountingSortDemo
 
             var numbers = Array.ConvertAll(FileUtilities.Read("cisla.txt"), int.Parse);
 
-            sorter.Sort(numbers, numbers.Length);
+            sorter.Sort(numbers, numbers.Max(), numbers.Min());
 
             FileUtilities.DeleteIfExists(path);
 

@@ -2,18 +2,23 @@
 {
     public class CountingSort
     {
-        public void Sort(int[] array, int max)
+        public void Sort(int[] array, int max, int min)
         {
-            var counts = new int[max + 1];
+            var frequencies = new int[max - min + 1];
+            var length = array.Length;
+            var sorted = new int[length];
 
-            foreach (var item in array)
-                counts[item]++;
+            for (var i = 0; i < length; i++)
+                frequencies[array[i] - min]++;
 
-            var k = 0;
+            for (var i = 1; i < frequencies.Length; i++)
+                frequencies[i] += frequencies[i - 1];
 
-            for (var i = 0; i < counts.Length; i++)
-                for (var j = 0; j < counts[i]; j++)
-                    array[k++] = i;
+            for (var i = length - 1; i >= 0; i--)
+                sorted[--frequencies[array[i] - min]] = array[i];
+            
+            for (var i = 0; i < length; i++)
+                array[i] = sorted[i];
         }
     }
 }
