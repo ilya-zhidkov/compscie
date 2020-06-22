@@ -45,6 +45,7 @@
     <Compile Include="CircularQueue.cs" />
     <Compile Include="CountingSort.cs" />
     <Compile Include="Generator.cs" />
+    <Compile Include="Search.cs" />
     <Compile Include="QuickSort.cs" />
     <Compile Include="Stack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

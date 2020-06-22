@@ -50,6 +50,7 @@
     <Compile Include="Demos\QueueDemo\Operations\EnqueueOperation.cs" />
     <Compile Include="Demos\QueueDemo\QueueDemo.cs" />
     <Compile Include="Demos\QuickSortDemo\QuickSortDemo.cs" />
+    <Compile Include="Demos\SearchDemo\LinearSearchDemo.cs" />
     <Compile Include="Demos\StackDemo\StackDemo.cs" />
     <Compile Include="Demos\StackDemo\Operations\IOperation.cs" />
     <Compile Include="Demos\StackDemo\Operations\PopOperation.cs" />
