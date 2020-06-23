@@ -67,6 +67,18 @@ namespace CompScie.Core
 
         public void Remove(int key) => Remove(root, key);
 
+        public void TraversePreOrder() => TraversePreOrder(root);
+
+        private void TraversePreOrder(Node root)
+        {
+            if (root == null)
+                return;
+
+            Console.Write($"{root.Value} ");
+            TraversePreOrder(root.LeftChild);
+            TraversePreOrder(root.RightChild);
+        }
+
         private Node Remove(Node root, int value)
         {
             if (root == null)

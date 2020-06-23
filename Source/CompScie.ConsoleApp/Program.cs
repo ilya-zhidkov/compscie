@@ -1,4 +1,6 @@
-﻿using CompScie.Core;
+﻿using System;
+
+using CompScie.Core;
 
 namespace CompScie.ConsoleApp
 {
@@ -16,7 +18,16 @@ namespace CompScie.ConsoleApp
             tree.Insert(8);
             tree.Insert(10);
 
+            Console.WriteLine("Pre-order");
+            tree.TraversePreOrder();
+
+            Console.WriteLine("\n\nDelete 9");
             tree.Remove(9);
+
+            Console.WriteLine("\nPre-order");
+            tree.TraversePreOrder();
+
+            Console.WriteLine();
         }
     }
 }
