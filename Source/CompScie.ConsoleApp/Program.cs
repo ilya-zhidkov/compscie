@@ -1,4 +1,6 @@
-﻿using CompScie.Core;
+﻿using System;
+
+using CompScie.Core;
 
 namespace CompScie.ConsoleApp
 {
@@ -14,6 +16,8 @@ namespace CompScie.ConsoleApp
             tree.Insert(6);
             tree.Insert(8);
             tree.Insert(10);
+
+            Console.WriteLine(tree.Find(10));
         }
     }
 }

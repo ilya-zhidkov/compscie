@@ -51,5 +51,21 @@
                 }
             }
         }
+
+        public bool Find(int value)
+        {
+            var current = root;
+
+            while (current != null)
+            {
+                if (value < current.Value)
+                    current = current.LeftChild;
+                else if (value > current.Value)
+                    current = current.RightChild;
+                else
+                    return true;
+            }
+            return false;
+        }
     }
 }
