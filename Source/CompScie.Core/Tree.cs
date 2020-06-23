@@ -1,4 +1,6 @@
-﻿namespace CompScie.Core
+﻿using System;
+
+namespace CompScie.Core
 {
     public class Tree
     {
@@ -67,5 +69,35 @@
             }
             return false;
         }
+
+        public int Min()
+        {
+            if (root == null)
+                throw new InvalidOperationException("Tree is empty.");
+
+            var current = root;
+            var last = current;
+
+            while (current != null)
+            {
+                last = current;
+                current = current.LeftChild;
+            }
+
+            return last.Value;
+        }
+
+        private int Min(Node root)
+        {
+            if (IsLeaf(root))
+                return root.Value;
+
+            var left = Min(root.LeftChild);
+            var right = Min(root.RightChild);
+
+            return Math.Min(Math.Min(left, right), root.Value);
+        }
+
+        private bool IsLeaf(Node node) => node.LeftChild == null && node.RightChild == null;
     }
 }

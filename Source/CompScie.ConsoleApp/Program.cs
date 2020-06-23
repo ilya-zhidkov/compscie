@@ -17,7 +17,7 @@ namespace CompScie.ConsoleApp
             tree.Insert(8);
             tree.Insert(10);
 
-            Console.WriteLine(tree.Find(10));
+            Console.WriteLine(tree.Min());
         }
     }
 }
