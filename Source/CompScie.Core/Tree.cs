@@ -17,41 +17,19 @@ namespace CompScie.Core
 
         private Node root;
 
-        public void Insert(int value)
+        public void Insert(int value) => root = Insert(root, value);
+
+        private Node Insert(Node root, int value)
         {
-            var node = new Node(value);
-
             if (root == null)
-            {
-                root = node;
-                return;
-            }
+                return new Node(value);
 
-            var current = root;
+            if (value < root.Value)
+                root.LeftChild = Insert(root.LeftChild, value);
+            if (value > root.Value)
+                root.RightChild = Insert(root.RightChild, value);
 
-            while (true)
-            {
-                if (value < current.Value)
-                {
-                    if (current.LeftChild == null)
-                    {
-                        current.LeftChild = node;
-                        break;
-                    }
-
-                    current = current.LeftChild;
-                }
-                else
-                {
-                    if (current.RightChild == null)
-                    {
-                        current.RightChild = node;
-                        break;
-                    }
-
-                    current = current.RightChild;
-                }
-            }
+            return root;
         }
 
         public bool Find(int value)
