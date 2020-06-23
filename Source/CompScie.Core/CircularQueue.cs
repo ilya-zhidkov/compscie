@@ -14,7 +14,7 @@ namespace CompScie.Core
         public void Enqueue(int item)
         {
             if (IsFull())
-                throw new InvalidOperationException("Queue is full.");
+                throw new InvalidOperationException("Fronta je plna.");
 
             items[rear] = item;
             rear = (rear + 1) % items.Length;
@@ -24,7 +24,7 @@ namespace CompScie.Core
         public int Dequeue()
         {
             if (IsEmpty())
-                throw new InvalidOperationException("Queue is empty.");
+                throw new InvalidOperationException("Front je prazdna.");
 
             var item = items[front];
             items[front] = 0;

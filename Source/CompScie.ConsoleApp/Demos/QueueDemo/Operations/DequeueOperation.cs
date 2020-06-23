@@ -14,23 +14,24 @@ namespace CompScie.ConsoleApp.Demos.QueueDemo.Operations
 
         public void Perform()
         {
-            ConsoleUtilities.Prompt("\nHow many items to dequeue? ");
+            ConsoleUtilities.Prompt("\nKolik prvku je treba odebrat? ");
             var count = ConsoleUtilities.GetUserInput();
+            ConsoleUtilities.Prompt("\n");
 
             for (var index = 0; index < count; index++)
             {
                 try
                 {
-                    ConsoleUtilities.Prompt($"Dequeued: {queue.Dequeue()}\n");
+                    ConsoleUtilities.Prompt($"Odebrano: {queue.Dequeue()}\n");
                 }
                 catch (InvalidOperationException exception)
                 {
-                    ConsoleUtilities.Prompt($"\nERROR: {exception.Message}\n");
+                    ConsoleUtilities.Prompt($"\nCHYBA: {exception.Message}\n");
                     break;
                 }
             }
 
-            ConsoleUtilities.Prompt($"\nQueue: {queue}\n");
+            ConsoleUtilities.Prompt($"\nFRONTA: {queue}\n");
         }
     }
 }

@@ -14,20 +14,20 @@ namespace CompScie.ConsoleApp.Demos.QueueDemo.Operations
 
         public void Perform()
         {
-            ConsoleUtilities.Prompt("\nHow many items to enqueue? ");
+            ConsoleUtilities.Prompt("\nKolik prvku je treba pridat? ");
             var count = ConsoleUtilities.GetUserInput();
 
             for (var index = 0; index < count; index++)
             {
                 try
                 {
-                    ConsoleUtilities.Prompt($"\nEnter an item to enqueue: ");
+                    ConsoleUtilities.Prompt($"\nZadejte hodnotu: ");
                     queue.Enqueue(ConsoleUtilities.GetUserInput());
-                    ConsoleUtilities.Prompt($"Queue: {queue}\n");
+                    ConsoleUtilities.Prompt($"FRONTA: {queue}\n");
                 }
                 catch (InvalidOperationException exception)
                 {
-                    ConsoleUtilities.Prompt($"\nERROR: {exception.Message}\n");
+                    ConsoleUtilities.Prompt($"\nCHYBA: {exception.Message}\n");
                     break;
                 }
             }

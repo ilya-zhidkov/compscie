@@ -13,20 +13,20 @@ namespace CompScie.ConsoleApp.Demos.StackDemo.Operations
 
         public void Perform()
         {
-            ConsoleUtilities.Prompt("\nHow many items to push? ");
+            ConsoleUtilities.Prompt("\nKolik prvku je treba pridat? ");
             var count = ConsoleUtilities.GetUserInput();
 
             for (var index = 0; index < count; index++)
             {
                 try
                 {
-                    ConsoleUtilities.Prompt($"\nEnter an item to push: ");
+                    ConsoleUtilities.Prompt($"\nZadejte hodnotu: ");
                     stack.Push(ConsoleUtilities.GetUserInput());
-                    ConsoleUtilities.Prompt($"Stack: {stack}\n");
+                    ConsoleUtilities.Prompt($"ZASOBNIK: {stack}\n");
                 }
                 catch (StackOverflowException exception)
                 {
-                    ConsoleUtilities.Prompt($"\nERROR: {exception.Message}\n");
+                    ConsoleUtilities.Prompt($"\nCHYBA: {exception.Message}\n");
                     break;
                 }
             }

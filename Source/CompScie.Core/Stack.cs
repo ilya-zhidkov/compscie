@@ -13,7 +13,7 @@ namespace CompScie.Core
         public void Push(int item)
         {
             if (IsFull())
-                throw new StackOverflowException("Stack is full.");
+                throw new StackOverflowException("Zasobnik je plny.");
 
             items[count++] = item;
         }
@@ -21,7 +21,7 @@ namespace CompScie.Core
         public int Pop()
         {
             if (IsEmpty())
-                throw new InvalidOperationException("Stack is empty.");
+                throw new InvalidOperationException("Zasobnik je prazdny.");
 
             return items[--count];
         }

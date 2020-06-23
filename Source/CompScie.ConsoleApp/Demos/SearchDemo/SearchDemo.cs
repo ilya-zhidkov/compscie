@@ -15,12 +15,12 @@ namespace CompScie.ConsoleApp.Demos.SearchDemo
 
             while (true)
             {
-                ConsoleUtilities.Prompt("Enter a number to find: ");
+                ConsoleUtilities.Prompt("Zadejte hledany prvek: ");
                 var number = ConsoleUtilities.GetUserInput();
             
                 var count = search.Lookup(number);
 
-                ConsoleUtilities.Prompt($"\n{(count > 0 ? $"{number} was found {count} times.\n" : $"{number} wasn't found.\n")}\n");
+                ConsoleUtilities.Prompt($"\n{(count > 0 ? $"{number} bylo nalezeno {count} krat.\n" : $"{number} nebylo nalezeno.\n")}\n");
             }
         }
     }

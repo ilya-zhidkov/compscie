@@ -23,7 +23,7 @@ namespace CompScie.ConsoleApp.Demos.CountingSortDemo
             foreach (var number in numbers)
                 FileUtilities.Write(path, number);
 
-            ConsoleUtilities.Prompt("Sorted!\n");
+            ConsoleUtilities.Prompt("Setrideno!\n");
         }
     }
 }

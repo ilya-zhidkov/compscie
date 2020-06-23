@@ -9,13 +9,13 @@ namespace CompScie.ConsoleApp.Demos.GeneratorDemo
 
         public static void Show()
         {
-            ConsoleUtilities.Prompt("Enter minimum: ");
+            ConsoleUtilities.Prompt("Zadejte minimum: ");
             var min = ConsoleUtilities.GetUserInput();
 
-            ConsoleUtilities.Prompt("Enter maximum: ");
+            ConsoleUtilities.Prompt("Zadejte maximum: ");
             var max = ConsoleUtilities.GetUserInput();
 
-            ConsoleUtilities.Prompt("How many numbers to generate? ");
+            ConsoleUtilities.Prompt("Kolik cisel je treba vygenerovat? ");
             var count = ConsoleUtilities.GetUserInput();
 
             FileUtilities.DeleteIfExists(path);
@@ -23,7 +23,7 @@ namespace CompScie.ConsoleApp.Demos.GeneratorDemo
             for (int index = 0; index < count; index++)
                 FileUtilities.Write(path, Generator.Generate(min, max));
 
-            ConsoleUtilities.Prompt("\nDone!\n");
+            ConsoleUtilities.Prompt("\nHotovo!\n");
         }
     }
 }

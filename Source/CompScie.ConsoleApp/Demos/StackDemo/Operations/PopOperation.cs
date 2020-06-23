@@ -13,23 +13,24 @@ namespace CompScie.ConsoleApp.Demos.StackDemo.Operations
 
         public void Perform()
         {
-            ConsoleUtilities.Prompt("\nHow many items to pop? ");
+            ConsoleUtilities.Prompt("\nKolik prvku je treba odebrat? ");
             var count = ConsoleUtilities.GetUserInput();
+            ConsoleUtilities.Prompt("\n");
 
             for (var index = 0; index < count; index++)
             {
                 try
                 {
-                    ConsoleUtilities.Prompt($"Popped: {stack.Pop()}\n");
+                    ConsoleUtilities.Prompt($"Odebrano: {stack.Pop()}\n");
                 }
                 catch (InvalidOperationException exception)
                 {
-                    ConsoleUtilities.Prompt($"\nERROR: {exception.Message}\n");
+                    ConsoleUtilities.Prompt($"\nCHYBA: {exception.Message}\n");
                     break;
                 }
             }
 
-            ConsoleUtilities.Prompt($"\nStack: {stack}\n");
+            ConsoleUtilities.Prompt($"\nZASOBNIK: {stack}\n");
         }
     }
 }

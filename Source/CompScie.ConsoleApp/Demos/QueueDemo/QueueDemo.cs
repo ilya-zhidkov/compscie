@@ -12,7 +12,7 @@ namespace CompScie.ConsoleApp.Demos.QueueDemo
     {
         public static void Show()
         {
-            ConsoleUtilities.Prompt("Enter size of a queue: ");
+            ConsoleUtilities.Prompt("Zadejte velikost fronty: ");
             var queue = new CircularQueue(size: ConsoleUtilities.GetUserInput());
 
             var operations = new Dictionary<int, IOperation>
@@ -23,14 +23,14 @@ namespace CompScie.ConsoleApp.Demos.QueueDemo
 
             while (true)
             {
-                ConsoleUtilities.DisplayMenu(options: new[] { "\n1. Enqueue", "2. Dequeue", "3. Quit" });
+                ConsoleUtilities.DisplayMenu(options: new[] { "\n1. Pridat", "2. Odebrat", "3. Odejit" });
 
-                ConsoleUtilities.Prompt("\nChoose an option: ");
+                ConsoleUtilities.Prompt("\nZvolte moznost: ");
                 var operation = ConsoleUtilities.GetUserInput();
 
                 if (!operations.ContainsKey(operation))
                 {
-                    ConsoleUtilities.Prompt("\nClosing application...\n");
+                    ConsoleUtilities.Prompt("\nUkonceni aplikace...\n");
                     break;
                 }
 

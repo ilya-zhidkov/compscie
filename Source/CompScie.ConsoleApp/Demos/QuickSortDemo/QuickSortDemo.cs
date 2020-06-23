@@ -22,7 +22,7 @@ namespace CompScie.ConsoleApp.Demos.QuickSortDemo
             foreach (var number in numbers)
                 FileUtilities.Write(path, number);
 
-            ConsoleUtilities.Prompt("Sorted!\n");
+            ConsoleUtilities.Prompt("Setrideno!\n");
         }
     }
 }

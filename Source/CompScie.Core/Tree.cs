@@ -12,7 +12,7 @@ namespace CompScie.Core
 
             public Node(int value) => Value = value;
 
-            public override string ToString() => $"Node = {Value}";
+            public override string ToString() => $"Prvek = {Value}";
         }
 
         private Node root;
@@ -51,7 +51,7 @@ namespace CompScie.Core
         public int Min()
         {
             if (root == null)
-                throw new InvalidOperationException("Tree is empty.");
+                throw new InvalidOperationException("Tento prvek neexistuje.");
 
             var current = root;
             var last = current;
@@ -82,7 +82,7 @@ namespace CompScie.Core
         private Node Remove(Node root, int value)
         {
             if (root == null)
-                throw new InvalidOperationException($"Tree is empty.");
+                throw new InvalidOperationException("Tento prvek neexistuje.");
 
             if (value < root.Value)
                 root.LeftChild = Remove(root.LeftChild, value);

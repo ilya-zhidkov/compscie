@@ -21,7 +21,7 @@ namespace CompScie.ConsoleApp.Demos.BinarySearchTreeDemo.Operations
             }
             catch (Exception exception)
             {
-                ConsoleUtilities.Prompt($"\nERROR: {exception.Message}\n");
+                ConsoleUtilities.Prompt($"\nCHYBA: {exception.Message}\n");
                 return;
             }
         }
