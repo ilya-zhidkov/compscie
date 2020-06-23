@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Demos\BinarySearchTreeDemo\BinarySearchTreeDemo.cs" />
+    <Compile Include="Demos\BinarySearchTreeDemo\Operations\FindOperation.cs" />
+    <Compile Include="Demos\BinarySearchTreeDemo\Operations\InsertOperation.cs" />
+    <Compile Include="Demos\BinarySearchTreeDemo\Operations\RemoveOperation.cs" />
     <Compile Include="Demos\BubbleSortDemo\BubbleSortDemo.cs" />
     <Compile Include="Demos\CountingSortDemo\CountingSortDemo.cs" />
     <Compile Include="Demos\GeneratorDemo\GeneratorDemo.cs" />

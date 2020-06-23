@@ -82,7 +82,7 @@ namespace CompScie.Core
         private Node Remove(Node root, int value)
         {
             if (root == null)
-                throw new InvalidOperationException("Tree is empty.");
+                throw new InvalidOperationException($"Tree is empty.");
 
             if (value < root.Value)
                 root.LeftChild = Remove(root.LeftChild, value);

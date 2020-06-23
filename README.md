@@ -28,7 +28,7 @@ A set of computer science related topics (such as algorithms, data structures et
 - [x] Counting sort
 - [x] Linear search
 - [x] Binary search
-- [ ] Binary tree
+- [x] Binary Search Tree
 
 ---
 
