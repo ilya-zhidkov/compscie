@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CompScie.Core
 {
@@ -26,7 +27,25 @@ namespace CompScie.Core
             return frequency[key];
         }
 
-        public bool ContainsKey(int key) => LinearSearch(key) >= 0;
+        public bool ContainsKey(int key) => BinarySearch(key) >= 0;
+
+        private int BinarySearch(int key) => BinarySearch(items, key, 0, items.Length - 1);
+
+        private int BinarySearch(int[] array, int key, int left, int right)
+        {
+            if (right < left)
+                return -1;
+
+            var middle = (left + right) / 2;
+
+            if (array[middle] == key)
+                return middle;
+
+            if (key < array[middle])
+                return BinarySearch(array, key, left, middle - 1);
+
+            return BinarySearch(array, key, middle + 1, right);
+        }
 
         private int LinearSearch(int key)
         {

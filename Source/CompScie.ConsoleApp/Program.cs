@@ -4,6 +4,6 @@ namespace CompScie.ConsoleApp
 {
     class Program
     {
-        static void Main(string[] args) => LinearSearchDemo.Show();
+        static void Main(string[] args) => SearchDemo.Show();
     }
 }

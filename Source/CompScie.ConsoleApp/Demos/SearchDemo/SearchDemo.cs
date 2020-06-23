@@ -5,7 +5,7 @@ using CompScie.Core;
 
 namespace CompScie.ConsoleApp.Demos.SearchDemo
 {
-    public class LinearSearchDemo
+    public class SearchDemo
     {
         public static void Show()
         {
