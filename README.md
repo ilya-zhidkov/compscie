@@ -23,6 +23,7 @@ A set of computer science related topics (such as algorithms, data structures et
 - [x] Stack
 - [x] Circular queue
 - [x] Random number generator
+- [x] Insertion sort
 - [x] Bubble sort
 - [x] Quick sort
 - [x] Counting sort

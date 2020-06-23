@@ -1,9 +1,9 @@
-﻿using CompScie.ConsoleApp.Demos.BinarySearchTreeDemo;
+﻿using CompScie.ConsoleApp.Demos.StackDemo;
 
 namespace CompScie.ConsoleApp
 {
     class Program
     {
-        static void Main(string[] args) => BinarySearchTreeDemo.Show();
+        static void Main(string[] args) => StackDemo.Show();
     }
 }
