@@ -87,6 +87,31 @@ namespace CompScie.Core
             return last.Value;
         }
 
+        public void Remove(int key) => Remove(root, key);
+
+        private Node Remove(Node root, int value)
+        {
+            if (root == null)
+                throw new InvalidOperationException("Tree is empty.");
+
+            if (value < root.Value)
+                root.LeftChild = Remove(root.LeftChild, value);
+            else if (value > root.Value)
+                root.RightChild = Remove(root.RightChild, value);
+            else
+            {
+                if (root.LeftChild == null)
+                    return root.RightChild;
+                else if (root.RightChild == null)
+                    return root.LeftChild;
+
+                root.Value = Min(root.RightChild);
+                root.RightChild = Remove(root.RightChild, root.Value);
+            }
+
+            return root;
+        }
+
         private int Min(Node root)
         {
             if (IsLeaf(root))
