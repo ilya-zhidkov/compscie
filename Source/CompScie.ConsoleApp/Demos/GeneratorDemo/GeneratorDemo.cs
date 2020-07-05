@@ -1,4 +1,6 @@
-﻿using CompScie.ConsoleApp.Utilities;
+﻿using System.Text;
+
+using CompScie.ConsoleApp.Utilities;
 using CompScie.Core;
 
 namespace CompScie.ConsoleApp.Demos.GeneratorDemo
@@ -20,8 +22,12 @@ namespace CompScie.ConsoleApp.Demos.GeneratorDemo
 
             FileUtilities.DeleteIfExists(path);
 
-            for (int index = 0; index < count; index++)
-                FileUtilities.Write(path, Generator.Generate(min, max));
+            var builder = new StringBuilder();
+
+            for (var index = 0; index < count; index++)
+                builder.AppendLine(Generator.Generate(min, max).ToString());
+            
+            FileUtilities.Write(path, builder.ToString().Trim());
 
             ConsoleUtilities.Prompt("\nHotovo!\n");
         }

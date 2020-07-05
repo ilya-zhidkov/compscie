@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 
 using CompScie.ConsoleApp.Utilities;
 using CompScie.Core;
@@ -18,12 +19,16 @@ namespace CompScie.ConsoleApp.Demos.CountingSortDemo
 
             sorter.Sort(numbers, numbers.Max(), numbers.Min());
 
+            ConsoleUtilities.Prompt("Setrideno!\n");
+
             FileUtilities.DeleteIfExists(path);
 
-            foreach (var number in numbers)
-                FileUtilities.Write(path, number);
+            var builder = new StringBuilder();
 
-            ConsoleUtilities.Prompt("Setrideno!\n");
+            foreach (var number in numbers)
+                builder.AppendLine(number.ToString());
+
+            FileUtilities.Write(path, builder.ToString().Trim());
         }
     }
 }

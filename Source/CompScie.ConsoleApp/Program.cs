@@ -1,9 +1,9 @@
-﻿using CompScie.ConsoleApp.Demos.StackDemo;
+﻿using CompScie.ConsoleApp.Demos.GeneratorDemo;
 
 namespace CompScie.ConsoleApp
 {
     class Program
     {
-        static void Main(string[] args) => StackDemo.Show();
+        static void Main(string[] args) => GeneratorDemo.Show();
     }
 }
