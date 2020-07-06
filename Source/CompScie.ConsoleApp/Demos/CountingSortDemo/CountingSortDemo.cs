@@ -17,9 +17,13 @@ namespace CompScie.ConsoleApp.Demos.CountingSortDemo
 
             var numbers = Array.ConvertAll(FileUtilities.Read("cisla.txt"), int.Parse);
 
+            ConsoleUtilities.Prompt("Probiha trideni dat...\n");
+
             sorter.Sort(numbers, numbers.Max(), numbers.Min());
 
             ConsoleUtilities.Prompt("Setrideno!\n");
+
+            ConsoleUtilities.Prompt("Probiha zapis do souboru...\n");
 
             FileUtilities.DeleteIfExists(path);
 
@@ -29,6 +33,8 @@ namespace CompScie.ConsoleApp.Demos.CountingSortDemo
                 builder.AppendLine(number.ToString());
 
             FileUtilities.Write(path, builder.ToString().Trim());
+
+            ConsoleUtilities.Prompt("Hotovo!\n");
         }
     }
 }
