@@ -16,7 +16,6 @@ namespace CompScie.ConsoleApp.Demos.QueueDemo.Operations
         {
             ConsoleUtilities.Prompt("\nKolik prvku je treba odebrat? ");
             var count = ConsoleUtilities.GetUserInput();
-            ConsoleUtilities.Prompt("\n");
 
             for (var index = 0; index < count; index++)
             {
