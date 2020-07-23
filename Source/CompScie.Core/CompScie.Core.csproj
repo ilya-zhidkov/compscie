@@ -46,6 +46,7 @@
     <Compile Include="CountingSort.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="InsertionSort.cs" />
+    <Compile Include="LinkedList.cs" />
     <Compile Include="Search.cs" />
     <Compile Include="QuickSort.cs" />
     <Compile Include="Stack.cs" />
