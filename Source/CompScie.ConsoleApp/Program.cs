@@ -14,8 +14,15 @@ namespace CompScie.ConsoleApp
             list.AddLast(20);
             list.AddLast(30);
 
-            foreach (var node in list)
-                Console.Write($"{node} ");
+            Console.WriteLine("Before removal:");
+            Console.WriteLine($"Count: {list.Count}");
+            Console.WriteLine($"List: {list}");
+
+            list.Remove(20);
+
+            Console.WriteLine("\nAfter removal:");
+            Console.WriteLine($"Count: {list.Count}");
+            Console.WriteLine($"List: {list}");
         }
     }
 }

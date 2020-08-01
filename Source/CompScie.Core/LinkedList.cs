@@ -158,6 +158,68 @@ namespace CompScie.Core
         public bool Contains(T value) => IndexOf(value) != -1;
 
         /// <summary>
+        /// Removes a <see cref="Node"/> from the <see cref="LinkedList{T}"/>.
+        /// </summary>
+        /// <param name="item">An item to remove.</param>
+        /// <remarks>Time complexity: O(n).</remarks>
+        public void Remove(T item)
+        {
+            // If we don't have any nodes in the list...
+            if (IsEmpty())
+                // raise an exception saying that the list is empty.
+                throw new InvalidOperationException($"{nameof(LinkedList<T>)} is empty.");
+
+            // If it's the first node...
+            if (Equals(head.Value, item))
+            {
+                // remove it.
+                RemoveFirst();
+
+                // Short circuit the execution.
+                return;
+            }
+
+            // Otherwise; start traversing the list from the beginning...
+            var current = head;
+
+            // keep track of the previous node so that we can
+            // shrink the list by pointing to the upcoming node
+            // when an item is removed.
+            var previous = null as Node;
+
+            // until we reach the end...
+            while (current != null)
+            {
+                // if values don't match...
+                if (!Equals(current.Value, item))
+                {
+                    // remember the previously visited node
+                    previous = current;
+
+                    // move on the to the next node.
+                    current = current.Next;
+
+                    // In case we didn't find the match at all...
+                    if (current == null)
+                        // raise an exception saying that a node with this value wasn't found.
+                        throw new InvalidOperationException($"{item} wasn't found in the list.");
+                }
+                // Otherwise; if values match...
+                else
+                {
+                    // unlink a node with this value from the list.
+                    previous.Next = current.Next;
+
+                    // Decrement the amount of nodes in the list.
+                    Count--;
+
+                    // Break out of the loop.
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
         /// Removes a <see cref="Node"/> from the beginning of a <see cref="LinkedList{T}"/>.
         /// </summary>
         /// <remarks>Time complexity: O(1).</remarks>
