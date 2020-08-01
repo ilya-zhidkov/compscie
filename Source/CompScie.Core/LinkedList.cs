@@ -1,23 +1,28 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace CompScie.Core
 {
     /// <summary>
     /// Represents a linear data structure for storing a list of objects in a sequential order.
     /// </summary>
-    /// <remarks>Unlike arrays they can grow and shrink automatically.</remarks>
-    public class LinkedList
+    /// <typeparam name="T">A type of value to store.</typeparam>
+    public class LinkedList<T> : IEnumerable<T>
     {
         /// <summary>
         /// Represents a basic building block of a <see cref="LinkedList"/>.
         /// </summary>
-        /// <remarks>Each <see cref="Node"/> holds two pieces of information. A value and a reference to the next node or null. Conventionally, the first node is called a "head" and the last is called a "tail".</remarks>
+        /// <remarks>
+        /// Each <see cref="Node"/> holds two pieces of information. A value and a reference to the next node or null. 
+        /// Conventionally, the first node is called a "head" and the last is called a "tail".
+        /// </remarks>
         private class Node
         {
             /// <summary>
             /// A piece of information that each <see cref="Node"/> holds.
             /// </summary>
-            public int Value { get; private set; }
+            public T Value { get; private set; }
 
             /// <summary>
             /// A reference to the next <see cref="Node"/> in a sequence.
@@ -28,7 +33,7 @@ namespace CompScie.Core
             /// Constructs a new instance of a <see cref="Node"/>.
             /// </summary>
             /// <param name="value">A piece of information to store.</param>
-            public Node(int value) => Value = value;
+            public Node(T value) => Value = value;
         }
 
         /// <summary>
@@ -42,25 +47,28 @@ namespace CompScie.Core
         private Node tail;
 
         /// <summary>
-        /// Keeps track of how many <see cref="Node"/>s we have in a <see cref="LinkedList"/>.
+        /// Keeps track of how many nodes we have in the <see cref="LinkedList{T}"/>.
         /// </summary>
-        /// <remarks>Time complexity: O(1)</remarks>
+        /// <remarks>Time complexity: O(1).</remarks>
         public int Count { get; private set; }
 
         /// <summary>
-        /// Adds a new <see cref="Node"/> to the end of a <see cref="LinkedList"/>.
+        /// Adds a new <see cref="Node"/> to the end of the <see cref="LinkedList{T}"/>.
         /// </summary>
         /// <param name="item">A piece of information to store.</param>
-        /// <remarks>Time complexity: O(1)</remarks>
-        public void AddLast(int item)
+        /// <typeparam name="T">A type of value to store.</typeparam>
+        /// <remarks>Time complexity: O(1).</remarks>
+        public void AddLast(T item)
         {
             // Firstly, create a new node...
             var node = new Node(item);
 
             // then, check, if the list is empty...
             if (IsEmpty())
+            {
                 // if so, point both head and tail to the newly created node.
                 head = tail = node;
+            }
             // Otherwise...
             else
             {
@@ -76,19 +84,22 @@ namespace CompScie.Core
         }
 
         /// <summary>
-        /// Adds a new <see cref="Node"/> to the beginning of a <see cref="LinkedList"/>.
+        /// Adds a new <see cref="Node"/> to the beginning of the <see cref="LinkedList{T}"/>.
         /// </summary>
         /// <param name="item">A piece of information to store.</param>
-        /// <remarks>Time complexity: O(1)</remarks>
-        public void AddFirst(int item)
+        /// <typeparam name="T">A type of value to store.</typeparam>
+        /// <remarks>Time complexity: O(1).</remarks>
+        public void AddFirst(T item)
         {
             // Firstly, create a new node...
             var node = new Node(item);
 
             // then, check, if the list is empty...
             if (IsEmpty())
+            {
                 // if so, point both head and tail to the newly created node.
                 head = tail = node;
+            }
             // Otherwise... 
             else
             {
@@ -104,12 +115,13 @@ namespace CompScie.Core
         }
 
         /// <summary>
-        /// Traverses a whole <see cref="LinkedList"/> until it finds the desired <see cref="Node"/>.
+        /// Traverses the whole <see cref="LinkedList{T}"/> until it finds the desired <see cref="Node"/>.
         /// </summary>
         /// <param name="value">A value of a <see cref="Node"/> to search for.</param>
+        /// <typeparam name="T">A type of value to store.</typeparam>
+        /// <remarks>Time complexity: O(n).</remarks>
         /// <returns>A numerical value which represents a position in the sequence. -1 if an item wasn't found.</returns>
-        /// <remarks>Time complexity: O(n)</remarks>
-        public int IndexOf(int value)
+        public int IndexOf(T value)
         {
             // Unlike arrays there is no such concept of an "index" in a linked list. So we have to mock it.
             var index = 0;
@@ -121,7 +133,7 @@ namespace CompScie.Core
             while (current != null)
             {
                 // if the value of the current node is equal to the desired value...
-                if (current.Value == value)
+                if (Equals(current.Value, value))
                     // return its position immediately.
                     return index;
 
@@ -140,20 +152,21 @@ namespace CompScie.Core
         /// Traverses a whole <see cref="LinkedList"/> to see if a <see cref="Node"/> with the provided value exists.
         /// </summary>
         /// <param name="value">A value of a <see cref="Node"/> to search for.</param>
-        /// <remarks>Time complexity: O(n)</remarks>
+        /// <typeparam name="T">A type of value to store.</typeparam>
+        /// <remarks>Time complexity: O(n).</remarks>
         /// <returns>True, if a <see cref="Node"/> with the provided value exists in a <see cref="LinkedList"/>.</returns>
-        public bool Contains(int value) => IndexOf(value) != -1;
+        public bool Contains(T value) => IndexOf(value) != -1;
 
         /// <summary>
-        /// Removes a <see cref="Node"/> from the beginning of a <see cref="LinkedList"/>.
+        /// Removes a <see cref="Node"/> from the beginning of a <see cref="LinkedList{T}"/>.
         /// </summary>
-        /// <remarks>Time complexity: O(1)</remarks>
+        /// <remarks>Time complexity: O(1).</remarks>
         public void RemoveFirst()
         {
             // If we don't have any nodes in the list...
             if (IsEmpty())
                 // raise an exception saying that the list is empty.
-                throw new InvalidOperationException($"{nameof(LinkedList)} is empty.");
+                throw new InvalidOperationException($"{nameof(LinkedList<T>)} is empty.");
 
             // If we have only a single node in the list...
             if (head == tail)
@@ -181,13 +194,14 @@ namespace CompScie.Core
         /// <summary>
         /// Removes a <see cref="Node"/> from the end of a <see cref="LinkedList"/>.
         /// </summary>
+        /// <typeparam name="T">A type of value to store.</typeparam>
         /// <remarks>Time complexity: O(n).</remarks>
         public void RemoveLast()
         {
             // If we don't have any nodes in the list...
             if (IsEmpty())
                 // raise an exception saying that the list is empty.
-                throw new InvalidOperationException($"{nameof(LinkedList)} is empty.");
+                throw new InvalidOperationException($"{nameof(LinkedList<T>)} is empty.");
 
             // If we have only a single node in the list...
             if (head == tail)
@@ -208,19 +222,18 @@ namespace CompScie.Core
                 tail.Next = null;
             }
 
-
             // Finally, decrement the amount of nodes in the list.
             Count--;
         }
 
         /// <summary>
-        /// Converts a <see cref="LinkedList"/> to <see cref="Array"/>.
+        /// Converts a <see cref="LinkedList{T}"/> to <see cref="Array"/>.
         /// </summary>
-        /// <returns>An <see cref="Array"/> representation of a <see cref="LinkedList"/>.</returns>
-        public int[] ToArray()
+        /// <returns>An <see cref="Array"/> representation of a <see cref="LinkedList{T}"/>.</returns>
+        public T[] ToArray()
         {
             // The result array that contains linked list's nodes as elements.
-            var array = new int[Count];
+            var array = new T[Count];
 
             // Keep track of the current node position.
             var index = 0;
@@ -238,11 +251,12 @@ namespace CompScie.Core
                 current = current.Next;
             }
 
+            // Return the final transformed linked list to the array data structure.
             return array;
         }
 
         /// <summary>
-        /// Reverses a <see cref="LinkedList"/>.
+        /// Reverses a <see cref="LinkedList{T}"/>.
         /// </summary>
         public void Reverse()
         {
@@ -280,7 +294,53 @@ namespace CompScie.Core
         }
 
         /// <summary>
-        /// Outputs nicely formatted <see cref="LinkedList"/>.
+        /// Outputs "nicely" formatted <see cref="LinkedList{T}"/>.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// var list = new LinkedList<int>();
+        /// list.AddLast(10);
+        /// list.AddLast(20);
+        /// list.AddLast(30);
+        /// Console.WriteLine(list); // 10 -> 20 -> 30
+        /// </code>
+        /// </example>
+        /// <returns>A "chain like" representation of the entire <see cref="LinkedList{T}"/>.</returns>
+        public override string ToString() => $"{string.Join<T>(" -> ", ToArray())}";
+
+        /// <summary>
+        /// Allows an elegant iteration over a generic collection.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// var list = new LinkedList<int>();
+        /// list.AddLast(10);
+        /// list.AddLast(20);
+        /// list.AddLast(30);
+        /// 
+        /// foreach (var node in list)
+        ///     Console.Write($"{node} "); // 10 20 30
+        /// </code>
+        /// </example>
+        /// <returns>A current value of a <see cref="Node"/>.</returns>
+        public IEnumerator<T> GetEnumerator()
+        {
+            // Start iterating from the beginning of the list.
+            var current = head;
+
+            // As long as there are nodes...
+            while (current != null)
+            {
+                // return the value of a current node
+                yield return current.Value;
+
+                // move on to the next node.
+                current = current.Next;
+            }
+        }
+
+        /// <summary>
+        /// Allows an elegant iteration over a non-generic collection.
         /// </summary>
         /// <example>
         /// <code>
@@ -288,11 +348,16 @@ namespace CompScie.Core
         /// list.AddLast(10);
         /// list.AddLast(20);
         /// list.AddLast(30);
-        /// Console.WriteLine(list); // 10 -> 20 -> 30
+        /// 
+        /// foreach (var node in list)
+        ///     Console.Write($"{node} "); // 10 20 30
         /// </code>
         /// </example>
-        /// <returns>A "chain like" representation of the entire <see cref="LinkedList"/>.</returns>
-        public override string ToString() => $"{string.Join(" -> ", ToArray())}";
+        /// <returns>A current value of a <see cref="Node"/>.</returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            yield return GetEnumerator();
+        }
 
         /// <summary>
         /// A helper method that finds out a previous <see cref="Node"/> in a sequence.
@@ -321,9 +386,9 @@ namespace CompScie.Core
         }
 
         /// <summary>
-        /// A helper method that determines if a <see cref="LinkedList"/> is empty.
+        /// A helper method that determines if a <see cref="LinkedList{T}"/> is empty.
         /// </summary>
-        /// <returns>True, if a <see cref="LinkedList"/> is empty.</returns>
+        /// <returns>True, if a <see cref="LinkedList{T}"/> is empty.</returns>
         private bool IsEmpty() => head == null;
     }
 }
