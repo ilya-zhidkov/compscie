@@ -31,6 +31,7 @@ A set of computer science related topics (such as algorithms, data structures et
 - [x] Binary search
 - [x] Binary Search Tree
 - [x] Linked list
+- [x] Hash table
 
 ---
 

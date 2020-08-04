@@ -8,21 +8,16 @@ namespace CompScie.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var list = new LinkedList<int>();
+            var table = new HashTable();
+            table.Put(6, "a"); // index: 6 % 5 = 1
+            table.Put(8, "b"); // index: 8 % 5 = 3
+            table.Put(11, "c"); // COLLISION! index: 1 -> add to linked list
 
-            list.AddLast(10);
-            list.AddLast(20);
-            list.AddLast(30);
+            table.Remove(6);
 
-            Console.WriteLine("Before removal:");
-            Console.WriteLine($"Count: {list.Count}");
-            Console.WriteLine($"List: {list}");
+            Console.WriteLine(table.Get(11)); // c
 
-            list.Remove(20);
-
-            Console.WriteLine("\nAfter removal:");
-            Console.WriteLine($"Count: {list.Count}");
-            Console.WriteLine($"List: {list}");
+            Console.WriteLine(table); // {11=c, 8=b}
         }
     }
 }
