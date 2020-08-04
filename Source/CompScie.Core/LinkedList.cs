@@ -5,24 +5,25 @@ using System.Collections.Generic;
 namespace CompScie.Core
 {
     /// <summary>
-    /// Represents a linear data structure for storing a list of objects in a sequential order.
+    /// Represents a linear data structure for storing a list of objects in a sequential order. 
+    /// Unlike arrays they can grow and shrink automatically.
     /// </summary>
     /// <typeparam name="T">A type of value to store.</typeparam>
     public class LinkedList<T> : IEnumerable<T>
     {
         /// <summary>
-        /// Represents a basic building block of a <see cref="LinkedList"/>.
+        /// Represents a basic building block of a <see cref="LinkedList{T}"/>.
         /// </summary>
         /// <remarks>
         /// Each <see cref="Node"/> holds two pieces of information. A value and a reference to the next node or null. 
         /// Conventionally, the first node is called a "head" and the last is called a "tail".
         /// </remarks>
-        private class Node
+        public class Node
         {
             /// <summary>
             /// A piece of information that each <see cref="Node"/> holds.
             /// </summary>
-            public T Value { get; private set; }
+            public T Data { get; private set; }
 
             /// <summary>
             /// A reference to the next <see cref="Node"/> in a sequence.
@@ -33,21 +34,21 @@ namespace CompScie.Core
             /// Constructs a new instance of a <see cref="Node"/>.
             /// </summary>
             /// <param name="value">A piece of information to store.</param>
-            public Node(T value) => Value = value;
+            public Node(T value) => Data = value;
         }
 
         /// <summary>
         /// A pointer to the first <see cref="Node"/>.
         /// </summary>
-        private Node head;
+        public Node Head { get; private set; }
 
         /// <summary>
         /// A pointer to the last <see cref="Node"/>.
         /// </summary>
-        private Node tail;
+        public Node Tail { get; private set; }
 
         /// <summary>
-        /// Keeps track of how many nodes we have in the <see cref="LinkedList{T}"/>.
+        /// Keeps track of how many nodes are presented in the <see cref="LinkedList{T}"/>.
         /// </summary>
         /// <remarks>Time complexity: O(1).</remarks>
         public int Count { get; private set; }
@@ -67,16 +68,16 @@ namespace CompScie.Core
             if (IsEmpty())
             {
                 // if so, point both head and tail to the newly created node.
-                head = tail = node;
+                Head = Tail = node;
             }
             // Otherwise...
             else
             {
                 // make a reference from second to last node to the newly added node
-                tail.Next = node;
+                Tail.Next = node;
 
                 // finally, point tail to the newly added node.
-                tail = node;
+                Tail = node;
             }
 
             // Increment the amount of nodes in the list.
@@ -98,16 +99,16 @@ namespace CompScie.Core
             if (IsEmpty())
             {
                 // if so, point both head and tail to the newly created node.
-                head = tail = node;
+                Head = Tail = node;
             }
             // Otherwise... 
             else
             {
                 // pre-pend this item to the list
-                node.Next = head;
+                node.Next = Head;
 
                 // finally, point head to the newly added node.
-                head = node;
+                Head = node;
             }
 
             // Increment the amount of nodes in the list.
@@ -127,13 +128,13 @@ namespace CompScie.Core
             var index = 0;
 
             // Start traversing a list from the beginning...
-            var current = head;
+            var current = Head;
 
             // until we reach the end...
             while (current != null)
             {
                 // if the value of the current node is equal to the desired value...
-                if (Equals(current.Value, value))
+                if (Equals(current.Data, value))
                     // return its position immediately.
                     return index;
 
@@ -154,7 +155,7 @@ namespace CompScie.Core
         /// <param name="value">A value of a <see cref="Node"/> to search for.</param>
         /// <typeparam name="T">A type of value to store.</typeparam>
         /// <remarks>Time complexity: O(n).</remarks>
-        /// <returns>True, if a <see cref="Node"/> with the provided value exists in a <see cref="LinkedList"/>.</returns>
+        /// <returns>True, if a <see cref="Node"/> with the provided value exists in a <see cref="LinkedList{T}"/>.</returns>
         public bool Contains(T value) => IndexOf(value) != -1;
 
         /// <summary>
@@ -170,7 +171,7 @@ namespace CompScie.Core
                 throw new InvalidOperationException($"{nameof(LinkedList<T>)} is empty.");
 
             // If it's the first node...
-            if (Equals(head.Value, item))
+            if (Equals(Head.Data, item))
             {
                 // remove it.
                 RemoveFirst();
@@ -180,7 +181,7 @@ namespace CompScie.Core
             }
 
             // Otherwise; start traversing the list from the beginning...
-            var current = head;
+            var current = Head;
 
             // keep track of the previous node so that we can
             // shrink the list by pointing to the upcoming node
@@ -191,7 +192,7 @@ namespace CompScie.Core
             while (current != null)
             {
                 // if values don't match...
-                if (!Equals(current.Value, item))
+                if (!Equals(current.Data, item))
                 {
                     // remember the previously visited node
                     previous = current;
@@ -207,13 +208,14 @@ namespace CompScie.Core
                 // Otherwise; if values match...
                 else
                 {
-                    // unlink a node with this value from the list.
+                    // unlink a node with this value from the list
+                    // by pointing to the upcoming node in a sequence.
                     previous.Next = current.Next;
 
-                    // Decrement the amount of nodes in the list.
+                    // Decrease the amount of nodes in the list.
                     Count--;
 
-                    // Break out of the loop.
+                    // No need to loop further.
                     break;
                 }
             }
@@ -231,25 +233,25 @@ namespace CompScie.Core
                 throw new InvalidOperationException($"{nameof(LinkedList<T>)} is empty.");
 
             // If we have only a single node in the list...
-            if (head == tail)
+            if (Head == Tail)
             {
                 // point both head and tail to null so that garbage collector can free the unlinked node from memory.
-                head = tail = null;
+                Head = Tail = null;
             }
             // Otherwise...
             else
             {
                 // Keep a reference to the second node in a sequence so that GC (garbage collector) doesn't free it.
-                var second = head.Next;
+                var second = Head.Next;
 
                 // Unlink the removed node.
-                head.Next = null;
+                Head.Next = null;
 
                 // Point head to the second node in the list.
-                head = second;
+                Head = second;
             }
 
-            // Decrement the amount of nodes in the list.
+            // Decrease the amount of nodes in the list.
             Count--;
         }
 
@@ -266,30 +268,30 @@ namespace CompScie.Core
                 throw new InvalidOperationException($"{nameof(LinkedList<T>)} is empty.");
 
             // If we have only a single node in the list...
-            if (head == tail)
+            if (Head == Tail)
             {
                 // point both head and tail to null so that garbage collector can free the unlinked node from memory.
-                head = tail = null;
+                Head = Tail = null;
             }
             // Otherwise...
             else
             {
                 // get the previous node before tail
-                var previous = GetPrevious(tail);
+                var previous = GetPrevious(Tail);
 
                 // shrink the list by pointing to the previous node
-                tail = previous;
+                Tail = previous;
 
                 // unlink the last node so that GC can free it.
-                tail.Next = null;
+                Tail.Next = null;
             }
 
-            // Finally, decrement the amount of nodes in the list.
+            // Finally, decrease the amount of nodes in the list.
             Count--;
         }
 
         /// <summary>
-        /// Converts a <see cref="LinkedList{T}"/> to <see cref="Array"/>.
+        /// Converts a <see cref="LinkedList{T}"/> to an <see cref="Array"/>.
         /// </summary>
         /// <returns>An <see cref="Array"/> representation of a <see cref="LinkedList{T}"/>.</returns>
         public T[] ToArray()
@@ -301,13 +303,13 @@ namespace CompScie.Core
             var index = 0;
 
             // Start iterating from the beginning...
-            var current = head;
+            var current = Head;
 
             // until we reach the end...
             while (current != null)
             {
                 // assign the value of the current node to the appropriate array position (index).
-                array[index++] = current.Value;
+                array[index++] = current.Data;
 
                 // Move on to the next node.
                 current = current.Next;
@@ -328,10 +330,10 @@ namespace CompScie.Core
                 return;
 
             // Initially, point head to the first node.
-            var previous = head;
+            var previous = Head;
 
             // Start traversing a list from the beginning...
-            var current = head.Next;
+            var current = Head.Next;
 
             // until we reach the end...
             while (current != null)
@@ -346,13 +348,13 @@ namespace CompScie.Core
             }
 
             // Point tail to the first node.
-            tail = head;
+            Tail = Head;
 
             // Unlink the initial direction.
-            tail.Next = null;
+            Tail.Next = null;
 
             // Point head to the last node.
-            head = previous;
+            Head = previous;
         }
 
         /// <summary>
@@ -388,13 +390,13 @@ namespace CompScie.Core
         public IEnumerator<T> GetEnumerator()
         {
             // Start iterating from the beginning of the list.
-            var current = head;
+            var current = Head;
 
             // As long as there are nodes...
             while (current != null)
             {
                 // return the value of a current node
-                yield return current.Value;
+                yield return current.Data;
 
                 // move on to the next node.
                 current = current.Next;
@@ -429,7 +431,7 @@ namespace CompScie.Core
         private Node GetPrevious(Node node)
         {
             // Start traversing a list from the beginning...
-            var current = head;
+            var current = Head;
 
             // until we reach the end...
             while (current != null)
@@ -450,7 +452,7 @@ namespace CompScie.Core
         /// <summary>
         /// A helper method that determines if a <see cref="LinkedList{T}"/> is empty.
         /// </summary>
-        /// <returns>True, if a <see cref="LinkedList{T}"/> is empty.</returns>
-        private bool IsEmpty() => head == null;
+        /// <returns>True, if the head node does not point to any node in a sequence.</returns>
+        private bool IsEmpty() => Head == null;
     }
 }
